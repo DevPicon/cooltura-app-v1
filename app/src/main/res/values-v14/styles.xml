@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Cooltura</item>
+    </style>
+
+    <!-- Main activity theme -->
+    <style name="PlaceTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/ActionBar.Solid.Cooltura.NoTitle</item>
+    </style>
+
+    <!-- Main activity action bar style -->
+    <style name="ActionBar.Solid.Cooltura.NoTitle"
+        parent="@style/ActionBar.Solid.Cooltura">
+        <item name="displayOptions">useLogo|showHome</item>
+        <item name="logo">@drawable/ic_launcher</item>
+    </style>
+
+    <!-- ActionBar style -->
+    <style name="ActionBar.Solid.Cooltura"
+        parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@color/coolura_red</item>
+    </style>
+
+    <style name="CodeFont">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="PlaceListStyle">
+        <item name="android:choiceMode">singleChoice</item>
+    </style>
+
+
+
+</resources>
