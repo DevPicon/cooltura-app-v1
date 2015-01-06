@@ -102,7 +102,16 @@ public class PlaceListFragment extends Fragment implements LoaderManager.LoaderC
         AlarmManager am=(AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
 
         //Set the AlarmManager to wake up the system.
-        am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pi);
+        am.set(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis() + 5000, pi);
+
+        /*
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, 18);
+
+        //Set the AlarmManager to wake up the system.
+        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                AlarmManager.INTERVAL_DAY, pi);*/
     }
 
     @Override
