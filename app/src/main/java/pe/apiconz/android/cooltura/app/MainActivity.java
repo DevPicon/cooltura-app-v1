@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
+import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
+
 
 public class MainActivity extends ActionBarActivity implements PlaceListFragment.Callback {
 
@@ -23,6 +25,8 @@ public class MainActivity extends ActionBarActivity implements PlaceListFragment
         } else {
             mTwoPane = false;
         }
+
+        PlaceSyncAdapter.initializeSyncAdapter(this);
     }
 
     @Override

@@ -15,4 +15,9 @@
     <string name="sample_museum_info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget nulla eget odio pellentesque mattis ut in orci. Vestibulum vel tortor tortor. Phasellus tincidunt urna est, sit amet tristique sem sollicitudin ut. Etiam quis lacus id lorem efficitur faucibus vel id ligula. Nunc eros lacus, blandit in lorem sit amet</string>
     <string name="sample_museum_address">Paseo Colón 125, Parque de la Exposición,Lima 1, Perú</string>
 
+    <!-- Account type (for sync-adapter authenticator) -->
+    <!-- SyncAdapter related -->
+    <string name="sync_account_type">cooltura.apiconz.pe</string>
+    <string name="content_authority">pe.apiconz.android.cooltura.app</string>
+
 </resources>
