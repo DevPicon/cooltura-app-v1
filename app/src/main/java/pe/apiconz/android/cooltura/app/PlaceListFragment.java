@@ -105,6 +105,8 @@ public class PlaceListFragment extends Fragment implements LoaderManager.LoaderC
         am.set(AlarmManager.RTC_WAKEUP,  System.currentTimeMillis() + 5000, pi);
 
         /*
+        //TODO: Add RECEIVE_BOOT_COMPLETED permission on AndroidManifest, evaluate the intent and declare intent-filter
+        //https://developer.android.com/training/scheduling/alarms.html
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, 18);
