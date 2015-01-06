@@ -1,5 +1,9 @@
 package pe.apiconz.android.cooltura.app;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -19,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import pe.apiconz.android.cooltura.app.data.PlaceContract;
+import pe.apiconz.android.cooltura.app.service.PlaceService;
 
 public class PlaceListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -81,6 +86,7 @@ public class PlaceListFragment extends Fragment implements LoaderManager.LoaderC
 
     @Override
     public void onResume() {
+        Log.d(LOG_TAG, "Entro a onResume()");
         super.onResume();
         if (mCityName != null) {
             getLoaderManager().restartLoader(PLACE_LOADER, null, this);
@@ -88,9 +94,15 @@ public class PlaceListFragment extends Fragment implements LoaderManager.LoaderC
     }
 
     private void updatePlaces() {
-        Log.d(LOG_TAG, "Entro a updatePlacer()");
-        FetchPlacesTask placesTask = new FetchPlacesTask(getActivity());
-        placesTask.execute("Lima");
+        Log.d(LOG_TAG, "Entro a updatePlaces()");
+        Intent alarmIntent = new Intent(getActivity(), PlaceService.AlarmReceiver.class);
+        alarmIntent.putExtra(PlaceService.CITY_QUERY_EXTRA, "Lima");
+
+        PendingIntent pi = PendingIntent.getBroadcast(getActivity(), 0, alarmIntent, PendingIntent.FLAG_ONE_SHOT);
+        AlarmManager am=(AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
+
+        //Set the AlarmManager to wake up the system.
+        am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pi);
     }
 
     @Override
