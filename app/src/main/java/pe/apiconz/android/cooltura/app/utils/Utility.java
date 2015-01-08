@@ -14,8 +14,12 @@ public class Utility {
             return R.drawable.ic_archaeolo;
         } else if(placeTypeName.equalsIgnoreCase("theatre")){
             return R.drawable.ic_theatre;
+        } else if(placeTypeName.equalsIgnoreCase("monument")){
+            return R.drawable.ic_monument;
+        } else if(placeTypeName.equalsIgnoreCase("church")){
+            return R.drawable.ic_church;
         } else{
-            return R.drawable.ic_museum;
+            return R.drawable.ic_place;
         }
     }
 }

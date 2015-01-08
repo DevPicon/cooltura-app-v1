@@ -39,7 +39,7 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
     // Interval at which to sync with the weather, in milliseconds.
     // 60 seconds (1 minute) * 180 = 3 hours
     public static final int SYNC_INTERVAL = 60 * 180;
-    public static final int SYNC_FLEXTIME = SYNC_INTERVAL/3;
+    public static final int SYNC_FLEXTIME = SYNC_INTERVAL / 3;
 
     public PlaceSyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
@@ -83,6 +83,7 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
 
     /**
      * Helper method to have the sync adapter sync immediately
+     *
      * @param context The context used to access the account service
      */
     public static void syncImmediately(Context context) {
@@ -111,7 +112,7 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
                 context.getString(R.string.app_name), context.getString(R.string.sync_account_type));
 
         // If the password doesn't exist, the account doesn't exist
-        if ( null == accountManager.getPassword(newAccount) ) {
+        if (null == accountManager.getPassword(newAccount)) {
 
         /*
          * Add the account and account type, no password or user data
@@ -226,11 +227,13 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
                 PlaceContract.PlaceEntry.COLUMN_PLACE_NAME + " = ? ",
                 new String[]{placeName},
                 null);
-
+        long returnValue;
         if (cursor.moveToFirst()) {
             Log.v(LOG_TAG, "'" + placeName + "' found in database");
             int placeIdIndex = cursor.getColumnIndex(PlaceContract.PlaceEntry._ID);
-            return cursor.getLong(placeIdIndex);
+
+            returnValue = cursor.getLong(placeIdIndex);
+
         } else {
             Log.v(LOG_TAG, "Didn't find it in database, inserting now!");
             ContentValues placeValues = new ContentValues();
@@ -242,8 +245,10 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
             Uri placeInsertUri = getContext().getContentResolver()
                     .insert(PlaceContract.PlaceEntry.CONTENT_URI, placeValues);
 
-            return ContentUris.parseId(placeInsertUri);
+            returnValue = ContentUris.parseId(placeInsertUri);
         }
+        cursor.close();
+        return returnValue;
     }
 
     private long addLocation(String cityName, double lat, double lon) {
@@ -256,10 +261,12 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
                 new String[]{cityName},
                 null);
 
+
+        long returnValue;
         if (cursor.moveToFirst()) {
             Log.v(LOG_TAG, "Found it in database");
             int locationIdIndex = cursor.getColumnIndex(PlaceContract.LocationEntry._ID);
-            return cursor.getLong(locationIdIndex);
+            returnValue = cursor.getLong(locationIdIndex);
         } else {
             Log.v(LOG_TAG, "Didn't find it in database, inserting now!");
             ContentValues values = new ContentValues();
@@ -270,8 +277,10 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
             Uri locationInsertUri = getContext().getContentResolver()
                     .insert(PlaceContract.LocationEntry.CONTENT_URI, values);
 
-            return ContentUris.parseId(locationInsertUri);
+            returnValue = ContentUris.parseId(locationInsertUri);
         }
+        cursor.close();
+        return returnValue;
     }
 
 
@@ -285,10 +294,11 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
                 new String[]{placeTypeName},
                 null);
 
+        long returnValue;
         if (cursor.moveToFirst()) {
             Log.v(LOG_TAG, "Found it in database");
             int placeTypeIdIndex = cursor.getColumnIndex(PlaceContract.TypeEntry._ID);
-            return cursor.getLong(placeTypeIdIndex);
+            returnValue =  cursor.getLong(placeTypeIdIndex);
         } else {
             Log.v(LOG_TAG, "Didn't find it in database, inserting now!");
             ContentValues placeTypeValues = new ContentValues();
@@ -297,8 +307,13 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
             Uri placeTypeInsertUri = getContext().getContentResolver()
                     .insert(PlaceContract.TypeEntry.CONTENT_URI, placeTypeValues);
 
-            return ContentUris.parseId(placeTypeInsertUri);
+            returnValue = ContentUris.parseId(placeTypeInsertUri);
         }
+
+        if(!cursor.isClosed()){
+            cursor.close();
+        }
+        return returnValue;
     }
 
 }
