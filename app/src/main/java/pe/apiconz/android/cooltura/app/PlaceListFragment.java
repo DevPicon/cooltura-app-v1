@@ -1,8 +1,10 @@
 package pe.apiconz.android.cooltura.app;
 
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -167,7 +169,12 @@ public class PlaceListFragment extends Fragment implements LoaderManager.LoaderC
     @Override
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         String sortOrder = PlaceContract.PlaceEntry.COLUMN_PLACE_NAME + " ASC";
-        mCityName = "Lima";
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        mCityName = prefs.getString("pref_locationCity", getString(R.string.pref_location_default));
+
+        Log.d(LOG_TAG, "mCityName =" + mCityName);
+
         Uri placesByCityNameUri = PlaceContract.PlaceEntry.buildPlacesByCityName(mCityName);
         Log.d(LOG_TAG, "Uri:" + placesByCityNameUri.toString());
 

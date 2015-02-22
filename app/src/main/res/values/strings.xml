@@ -10,7 +10,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sample_museum_name">Museo de Arte Italiano</string>
     <string name="sample_museum_district">Cercado de Lima</string>
+
     <string name="title_activity_museum_detail">MuseumDetailActivity</string>
+    <string name="title_activity_settings">Settings</string>
+
     <string name="sample_museum_title">Museo de Arte de Lima</string>
     <string name="sample_museum_info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget nulla eget odio pellentesque mattis ut in orci. Vestibulum vel tortor tortor. Phasellus tincidunt urna est, sit amet tristique sem sollicitudin ut. Etiam quis lacus id lorem efficitur faucibus vel id ligula. Nunc eros lacus, blandit in lorem sit amet</string>
     <string name="sample_museum_address">Paseo Colón 125, Parque de la Exposición,Lima 1, Perú</string>
@@ -20,4 +23,14 @@
     <string name="sync_account_type">cooltura.apiconz.pe</string>
     <string name="content_authority">pe.apiconz.android.cooltura.app</string>
 
+    <string name="pref_location_default" translatable="false">Lima</string>
+    <string name="pref_locationDialogTitle">Choose your city</string>
+    <string name="pref_locationTitle">Choose your city</string>
+
+    <string name="dialog_about">Hola!</string>
+    <string name="dialog_about_button">OK</string>
+    <string name="dialog_about_version">Version </string>
+    <string name="dialog_about_createdby">Created by Armando Picon</string>
+    <string name="dialog_about_contactme">Send Me Feedback</string>
+    <string name="dialog_about_myemail">apiconz@gmail.com</string>
 </resources>

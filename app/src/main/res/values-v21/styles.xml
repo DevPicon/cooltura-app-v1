@@ -2,7 +2,6 @@
 <resources>
 
     <style name="AppTheme" parent="android:Theme.Material">
-        <item name="android:actionBarStyle">@style/ActionBar.Solid.Cooltura</item>
-        <item name="android:statusBarColor">@color/coolura_red</item>
+        <item name="android:statusBarColor">@color/material_blue_500</item>
     </style>
 </resources>

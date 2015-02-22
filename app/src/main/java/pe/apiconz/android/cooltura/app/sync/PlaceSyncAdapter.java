@@ -8,12 +8,14 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.SyncRequest;
 import android.content.SyncResult;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.firebase.client.DataSnapshot;
@@ -51,8 +53,8 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
         Log.d(LOG_TAG, "onHandleIntent()");
 
         //TODO: Make data load only for a specific city
+
         //String cityQuery = intent.getStringExtra(CITY_QUERY_EXTRA);
-        String cityQuery = "Lima";
 
         Log.d(LOG_TAG, "Entro a doInBackground()");
 

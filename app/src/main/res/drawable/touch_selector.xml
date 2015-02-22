@@ -4,11 +4,11 @@
 
     <!-- State when a row is being pressed, but hasn't yet been activated (finger down) -->
     <item android:state_pressed="true"
-        android:drawable="@color/grey" />
+        android:drawable="@color/white" />
 
     <!-- Used when the view is "activated". -->
-    <item android:state_activated="true"
-        android:drawable="@color/coolura_light_red" />
+    <item android:color="@color/white" android:state_activated="true"
+        android:drawable="@color/material_blue_A200"  />
 
     <!-- Default, "just hangin' out" state. -->
     <item android:drawable="@android:color/transparent" />
