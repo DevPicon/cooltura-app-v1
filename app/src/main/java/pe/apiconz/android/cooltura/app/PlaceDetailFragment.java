@@ -96,7 +96,7 @@ public class PlaceDetailFragment extends Fragment implements LoaderManager.Loade
         mTxtPlaceDetailTypeName = ((TextView) rootView.findViewById(R.id.txtPlaceDetailTypeName));
         mTxtPlaceDetailCityName = ((TextView) rootView.findViewById(R.id.txtPlaceDetailCityName));
 
-        mImgPlace = (ImageView) rootView.findViewById(R.id.imgPlace);
+        //mImgPlace = (ImageView) rootView.findViewById(R.id.imgPlace);
         mImgPlaceType = (ImageView) rootView.findViewById(R.id.imgPlaceType);
 
         return rootView;
@@ -168,7 +168,7 @@ public class PlaceDetailFragment extends Fragment implements LoaderManager.Loade
         String placeCityName = data.getString(data.getColumnIndex(PlaceContract.LocationEntry.COLUMN_CITY_NAME));
         mTxtPlaceDetailCityName.setText(placeCityName);
 
-        mImgPlace.setImageResource(R.drawable.ic_museum);
+        //mImgPlace.setImageResource(R.drawable.ic_museum);
         mImgPlaceType.setImageResource(Utility.getIconResourceForPlaceType(placeTypeName));
 
         // We still need this for the share intent
