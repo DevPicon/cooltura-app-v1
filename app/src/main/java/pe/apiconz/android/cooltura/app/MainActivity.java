@@ -1,13 +1,19 @@
 package pe.apiconz.android.cooltura.app;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.regex.Pattern;
 
 import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
 
