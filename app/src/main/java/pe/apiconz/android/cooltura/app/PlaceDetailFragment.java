@@ -22,6 +22,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import pe.apiconz.android.cooltura.app.data.PlaceContract;
 import pe.apiconz.android.cooltura.app.utils.Utility;
 
@@ -96,8 +98,19 @@ public class PlaceDetailFragment extends Fragment implements LoaderManager.Loade
         mTxtPlaceDetailTypeName = ((TextView) rootView.findViewById(R.id.txtPlaceDetailTypeName));
         mTxtPlaceDetailCityName = ((TextView) rootView.findViewById(R.id.txtPlaceDetailCityName));
 
-        //mImgPlace = (ImageView) rootView.findViewById(R.id.imgPlace);
+        mImgPlace = (ImageView) rootView.findViewById(R.id.imgPlace);
         mImgPlaceType = (ImageView) rootView.findViewById(R.id.imgPlaceType);
+
+
+        //Glide part
+        String url = "http://blogs.peru.travel/es-lat/wp-content/uploads/2013/11/Museo-de-Arte-de-Lima.jpg";
+        Glide.with(this).load(url)
+                .centerCrop()
+                .placeholder(R.drawable.loader)
+                .error(R.drawable.dummy)
+                .crossFade()
+                .into(mImgPlace);
+
 
         return rootView;
 
