@@ -3,6 +3,6 @@
     android:id="@+id/fragment_place"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="pe.apiconz.android.cooltura.app.PlaceListFragment"
-    tools:context="pe.apiconz.android.cooltura.app.PlaceListFragment"
+    android:name="pe.apiconz.android.cooltura.app.ui.PlaceListFragment"
+    tools:context="pe.apiconz.android.cooltura.app.ui.PlaceListFragment"
     tools:layout="@android:layout/list_content" />

@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app;
+package pe.apiconz.android.cooltura.app.ui;
 
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.data.PlaceContract;
 import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
 
@@ -126,6 +127,7 @@ public class PlaceListFragment extends Fragment implements LoaderManager.LoaderC
         );
 
         mListView = (ListView) rootView.findViewById(R.id.listview_museums);
+        mListView.setEmptyView(rootView.findViewById(android.R.id.empty));
         mListView.setAdapter(mPlacesAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

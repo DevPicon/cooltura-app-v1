@@ -1,10 +1,12 @@
-package pe.apiconz.android.cooltura.app;
+package pe.apiconz.android.cooltura.app.ui;
 
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
+
+import pe.apiconz.android.cooltura.app.R;
 
 /**
  * Created by Indra on 30/01/2015.

@@ -24,9 +24,7 @@ public class PlaceDbHelper extends SQLiteOpenHelper {
 
         final String SQL_CREATE_LOCATION_TABLE = "CREATE TABLE " + LocationEntry.TABLE_NAME + " (" +
                 LocationEntry._ID + " INTEGER PRIMARY KEY," +
-                LocationEntry.COLUMN_CITY_NAME + " TEXT NOT NULL," +
-                LocationEntry.COLUMN_COORD_LAT + " REAL NOT NULL," +
-                LocationEntry.COLUMN_COORD_LONG + " REAL NOT NULL" +
+                LocationEntry.COLUMN_CITY_NAME + " TEXT NOT NULL" +
                 ")";
 
         final String SQL_CREATE_TYPE_TABLE = "CREATE TABLE " + TypeEntry.TABLE_NAME + " (" +
@@ -40,6 +38,9 @@ public class PlaceDbHelper extends SQLiteOpenHelper {
                 PlaceEntry.COLUMN_TYPE_KEY + " INTEGER NOT NULL," +
                 PlaceEntry.COLUMN_PLACE_NAME + " TEXT NOT NULL," +
                 PlaceEntry.COLUMN_PLACE_INFO + " TEXT," +
+                PlaceEntry.COLUMN_PLACE_IMAGE_URI + " TEXT,"  +
+                LocationEntry.COLUMN_COORD_LAT + " TEXT NOT NULL," +
+                LocationEntry.COLUMN_COORD_LONG + " TEXT NOT NULL," +
                 PlaceEntry.COLUMN_PLACE_ADDRESS + " TEXT NOT NULL, " +
                 " FOREIGN KEY (" + PlaceEntry.COLUMN_LOCATION_KEY + ") REFERENCES " +
                 LocationEntry.TABLE_NAME + "(" + LocationEntry._ID + ")," +

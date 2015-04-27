@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app;
+package pe.apiconz.android.cooltura.app.ui;
 
 
 import android.content.Intent;
@@ -24,7 +24,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import pe.apiconz.android.cooltura.app.R;
+import pe.apiconz.android.cooltura.app.data.Place;
 import pe.apiconz.android.cooltura.app.data.PlaceContract;
+import pe.apiconz.android.cooltura.app.utils.Constants;
 import pe.apiconz.android.cooltura.app.utils.Utility;
 
 import static pe.apiconz.android.cooltura.app.data.PlaceContract.PlaceEntry;
@@ -35,17 +38,18 @@ import static pe.apiconz.android.cooltura.app.data.PlaceContract.PlaceEntry;
 public class PlaceDetailFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final String PLACE_KEY = "placeId";
-    private static final String LOG_TAG = PlaceDetailFragment.class.getSimpleName();
+    private static final String LOG_TAG = PlaceDetailFragment.class.getCanonicalName();
     private static final String PLACE_SHARE_HASHTAG = " #CoolturaApp";
     private ShareActionProvider mShareActionProvider;
     private static final int DETAIL_PLACE_LOADER = 0;
-
+    private Place selectedPlace;
     private String mPlace;
 
     private static final String[] PLACE_DETAIL_COLUMNS = {
             PlaceEntry.TABLE_NAME + "." + PlaceEntry._ID,
             PlaceEntry.COLUMN_PLACE_NAME,
             PlaceEntry.COLUMN_PLACE_ADDRESS,
+            PlaceEntry.COLUMN_PLACE_IMAGE_URI,
             PlaceContract.TypeEntry.COLUMN_TYPE_NAME,
             PlaceContract.LocationEntry.COLUMN_CITY_NAME,
             PlaceContract.LocationEntry.COLUMN_COORD_LAT,
@@ -101,17 +105,6 @@ public class PlaceDetailFragment extends Fragment implements LoaderManager.Loade
         mImgPlace = (ImageView) rootView.findViewById(R.id.imgPlace);
         mImgPlaceType = (ImageView) rootView.findViewById(R.id.imgPlaceType);
 
-
-        //Glide part
-        String url = "http://blogs.peru.travel/es-lat/wp-content/uploads/2013/11/Museo-de-Arte-de-Lima.jpg";
-        Glide.with(this).load(url)
-                .centerCrop()
-                .placeholder(R.drawable.loader)
-                .error(R.drawable.dummy)
-                .crossFade()
-                .into(mImgPlace);
-
-
         return rootView;
 
 
@@ -123,16 +116,27 @@ public class PlaceDetailFragment extends Fragment implements LoaderManager.Loade
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.detailfragment, menu);
 
-        // Retrieve the share menu item
-        MenuItem menuItem = menu.findItem(R.id.action_share);
+    }
 
-        // Get the provider and hold onto it to set/change the share intent.
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-        // If onLoadFinished happens before this, we can go ahead and set the share intent now.
-        if (mPlace != null) {
-            mShareActionProvider.setShareIntent(createSharePlaceIntent());
+        switch (item.getItemId()){
+            case R.id.action_map:
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(Constants.MAPS_INTENT_URI +
+                        Uri.encode( selectedPlace.getLat()+ ", " + selectedPlace.getLon())));
+                startActivity(intent);
+                return true;
+            case R.id.action_share:
+                mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
+                if (mPlace != null) {
+                    mShareActionProvider.setShareIntent(createSharePlaceIntent());
+                }
+                return true;
         }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -181,8 +185,28 @@ public class PlaceDetailFragment extends Fragment implements LoaderManager.Loade
         String placeCityName = data.getString(data.getColumnIndex(PlaceContract.LocationEntry.COLUMN_CITY_NAME));
         mTxtPlaceDetailCityName.setText(placeCityName);
 
+        selectedPlace = new Place();
+        String lon = data.getString(data.getColumnIndex(PlaceContract.LocationEntry.COLUMN_COORD_LONG));
+        selectedPlace.setLon(lon);
+        String lat = data.getString(data.getColumnIndex(PlaceContract.LocationEntry.COLUMN_COORD_LAT));
+        selectedPlace.setLat(lat);
+
+        Log.d(LOG_TAG, "lat=" + lat + " /lon=" + lon);
+
         //mImgPlace.setImageResource(R.drawable.ic_museum);
         mImgPlaceType.setImageResource(Utility.getIconResourceForPlaceType(placeTypeName));
+
+        //Glide part
+        String url = data.getString(data.getColumnIndex(PlaceEntry.COLUMN_PLACE_IMAGE_URI));
+        Uri imageUrl = Uri.parse(url);
+        Glide.with(this).load(imageUrl)
+                .centerCrop()
+                .placeholder(R.drawable.dummy)
+                .error(R.drawable.dummy)
+                .crossFade()
+                .into(mImgPlace);
+
+
 
         // We still need this for the share intent
         mPlace = String.format("%s - %s - %s - %s", placeName, placeAddress, placeTypeName, placeCityName);

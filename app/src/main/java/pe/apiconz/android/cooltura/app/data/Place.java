@@ -1,5 +1,8 @@
 package pe.apiconz.android.cooltura.app.data;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
 /**
  * Created by Armando Picon on 30/12/2014.
  */
@@ -13,7 +16,43 @@ public class Place {
     private String city;
     private String province;
     private String region;
+    private String lon;
+    private String lat;
     private String country;
+    private Uri imageUrl;
+    private Bitmap image;
+
+    public String getLon() {
+        return lon;
+    }
+
+    public void setLon(String lon) {
+        this.lon = lon;
+    }
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public Uri getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(Uri imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
+    }
 
     public String getName() {
         return name;

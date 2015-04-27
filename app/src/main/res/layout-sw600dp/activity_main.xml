@@ -6,11 +6,11 @@
     android:baselineAligned="false"
     android:divider="?android:attr/dividerHorizontal"
     android:orientation="horizontal"
-    tools:context="pe.apiconz.android.cooltura.app.MainActivity">
+    tools:context="pe.apiconz.android.cooltura.app.ui.MainActivity">
 
     <fragment
         android:id="@+id/fragment_place"
-        android:name="pe.apiconz.android.cooltura.app.PlaceListFragment"
+        android:name="pe.apiconz.android.cooltura.app.ui.PlaceListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="2"
