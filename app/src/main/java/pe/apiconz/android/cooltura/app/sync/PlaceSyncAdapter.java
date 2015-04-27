@@ -37,7 +37,7 @@ import pe.apiconz.android.cooltura.app.utils.Constants;
  * Created by Indra on 06/01/2015.
  */
 public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
-    public final String LOG_TAG = PlaceSyncAdapter.class.getSimpleName();
+    public final String LOG_TAG = PlaceSyncAdapter.class.getCanonicalName();
     // Interval at which to sync with the weather, in milliseconds.
     // 60 seconds (1 minute) * 180 = 3 hours
     public static final int SYNC_INTERVAL = 60 * 180;
@@ -186,11 +186,9 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
         List<String> places = new ArrayList<>();
         for (HashMap<String, Object> placeMap : values) {
             if (placeMap != null) {
-                double lat = Double.valueOf(String.valueOf(placeMap.get(Constants.LATITUDE)));
-                double lon = Double.valueOf(String.valueOf(placeMap.get(Constants.LONGITUDE)));
                 String cityName = String.valueOf(placeMap.get(Constants.CITY));
 
-                long cityId = addLocation(cityName, lat, lon);
+                long cityId = addLocation(cityName);
 
                 String placeType = String.valueOf(placeMap.get(Constants.PLACE_TYPE));
 
@@ -198,8 +196,11 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
 
                 String placeName = String.valueOf(placeMap.get(Constants.NAME));
                 String placeAddress = String.valueOf(placeMap.get(Constants.ADDRESS));
+                String imageUrl = String.valueOf(placeMap.get(Constants.IMAGE_URL));
+                String lat = String.valueOf(placeMap.get(Constants.LATITUDE));
+                String lon = String.valueOf(placeMap.get(Constants.LONGITUDE));
 
-                long placeId = addPlace(placeName, placeAddress, cityId, placeTypeId);
+                long placeId = addPlace(placeName, placeAddress, cityId, placeTypeId, imageUrl, lat, lon);
 
                 Log.d(LOG_TAG, "The place " + placeName + " has been inserted with ID: " + placeId);
 
@@ -218,10 +219,16 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
     }
 
 
-    private long addPlace(String placeName, String placeAddress, long locationId, long placeTypeId) {
+    private long addPlace(String placeName, String placeAddress, long locationId, long placeTypeId, String imageUrl, String lat, String lon) {
         Log.v(LOG_TAG, "addPlace()");
 
-        Log.v(LOG_TAG, "Inserting " + placeName + " with address: " + placeAddress + ", location id:" + locationId + " and type id:" + placeTypeId);
+        Log.v(LOG_TAG, "Inserting " + placeName
+                + " with address: " + placeAddress
+                + ", location id:" + locationId
+                + ", image url:" + imageUrl
+                + ", type id:" + placeTypeId
+                + ", lat:" + lat
+                + ", lon:" + lon);
 
         Cursor cursor = getContext().getContentResolver().query(
                 PlaceContract.PlaceEntry.CONTENT_URI,
@@ -242,7 +249,10 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
             placeValues.put(PlaceContract.PlaceEntry.COLUMN_PLACE_NAME, placeName);
             placeValues.put(PlaceContract.PlaceEntry.COLUMN_PLACE_ADDRESS, placeAddress);
             placeValues.put(PlaceContract.PlaceEntry.COLUMN_LOCATION_KEY, locationId);
+            placeValues.put(PlaceContract.PlaceEntry.COLUMN_PLACE_IMAGE_URI, imageUrl);
             placeValues.put(PlaceContract.PlaceEntry.COLUMN_TYPE_KEY, placeTypeId);
+            placeValues.put(PlaceContract.LocationEntry.COLUMN_COORD_LAT, lat);
+            placeValues.put(PlaceContract.LocationEntry.COLUMN_COORD_LONG, lon);
 
             Uri placeInsertUri = getContext().getContentResolver()
                     .insert(PlaceContract.PlaceEntry.CONTENT_URI, placeValues);
@@ -253,8 +263,8 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
         return returnValue;
     }
 
-    private long addLocation(String cityName, double lat, double lon) {
-        Log.v(LOG_TAG, "Inserting " + cityName + " with coord: " + lat + "," + lon);
+    private long addLocation(String cityName) {
+        Log.v(LOG_TAG, "Inserting " + cityName);
 
         Cursor cursor = getContext().getContentResolver().query(
                 PlaceContract.LocationEntry.CONTENT_URI,
@@ -273,8 +283,6 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
             Log.v(LOG_TAG, "Didn't find it in database, inserting now!");
             ContentValues values = new ContentValues();
             values.put(PlaceContract.LocationEntry.COLUMN_CITY_NAME, cityName);
-            values.put(PlaceContract.LocationEntry.COLUMN_COORD_LAT, lat);
-            values.put(PlaceContract.LocationEntry.COLUMN_COORD_LONG, lon);
 
             Uri locationInsertUri = getContext().getContentResolver()
                     .insert(PlaceContract.LocationEntry.CONTENT_URI, values);

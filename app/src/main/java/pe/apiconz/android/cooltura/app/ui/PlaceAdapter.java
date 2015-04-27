@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app;
+package pe.apiconz.android.cooltura.app.ui;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.utils.Utility;
 
 /**

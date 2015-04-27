@@ -25,6 +25,7 @@ public class PlaceContract {
         public static final String COLUMN_CITY_NAME = "city_name";
         public static final String COLUMN_COORD_LAT = "coord_lat";
         public static final String COLUMN_COORD_LONG = "coord_long";
+        public static final String COLUMN_PLACE_IMAGE_URI = "image_uri";
 
         public static Uri buildLocationUri(long _id){
             return ContentUris.withAppendedId(CONTENT_URI,_id);
@@ -57,6 +58,7 @@ public class PlaceContract {
         public static final String COLUMN_PLACE_ADDRESS = "place_address";
         public static final String COLUMN_TYPE_KEY = "type_id";
         public static final String COLUMN_LOCATION_KEY = "location_id";
+        public static final String COLUMN_PLACE_IMAGE_URI = "image_uri";
 
         public static Uri buildPlaceUri(long id){
             return ContentUris.withAppendedId(CONTENT_URI, id);

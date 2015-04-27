@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app;
+package pe.apiconz.android.cooltura.app.ui;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -9,6 +9,9 @@ import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import pe.apiconz.android.cooltura.app.BuildConfig;
+import pe.apiconz.android.cooltura.app.R;
 
 public class AboutFragment extends DialogFragment {
 

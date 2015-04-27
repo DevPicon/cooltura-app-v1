@@ -1,24 +1,20 @@
-package pe.apiconz.android.cooltura.app;
+package pe.apiconz.android.cooltura.app.ui;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.util.regex.Pattern;
-
+import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
 
 
-public class MainActivity extends ActionBarActivity implements PlaceListFragment.Callback {
+public class MainActivity extends AppCompatActivity implements PlaceListFragment.Callback {
 
     private boolean mTwoPane = false;
     private String LOG_TAG = MainActivity.class.getSimpleName();
@@ -95,6 +91,8 @@ public class MainActivity extends ActionBarActivity implements PlaceListFragment
         }else if(id == R.id.action_about){
             DialogFragment newFragment = new AboutFragment();
             newFragment.show(getSupportFragmentManager(), "");
+        }else if(id == R.id.action_refresh){
+
         }
 
         return super.onOptionsItemSelected(item);

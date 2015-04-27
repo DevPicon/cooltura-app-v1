@@ -3,5 +3,5 @@
     android:id="@+id/place_detail_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pe.apiconz.android.cooltura.app.PlaceDetailActivity"
+    tools:context="pe.apiconz.android.cooltura.app.ui.PlaceDetailActivity"
     tools:ignore="MergeRootFrame" />
