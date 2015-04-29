@@ -16,7 +16,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
+import android.text.format.Time;
 import android.util.Log;
+import android.util.Patterns;
 
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
@@ -28,6 +31,8 @@ import org.json.JSONException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.data.PlaceContract;
@@ -59,9 +64,17 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
         Log.d(LOG_TAG, "Entro a doInBackground()");
 
         try {
+
+
             // Temporarily I use Firebase datasource
             Firebase.setAndroidContext(getContext());
             Firebase myFirebaseRef = new Firebase("https://cooltura-app.firebaseio.com/");
+
+            // Get basic user info
+            Firebase postRef = myFirebaseRef.child("users");
+            Map<String,String> userInfo = getInstalationData(getContext());
+            postRef.push().setValue(userInfo);
+
             myFirebaseRef.child("places").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -81,6 +94,40 @@ public class PlaceSyncAdapter extends AbstractThreadedSyncAdapter {
         } catch (Exception e) {
             Log.e(LOG_TAG, "Surgio un error", e);
         }
+    }
+
+    private Map getInstalationData(Context context) {
+        Map userInfo = new HashMap();
+        Time now = new Time();
+        if(now!=null){
+            now.setToNow();
+            userInfo.put("date",now.toString());
+        }
+
+        // Obtengo el correo electronico que esta en el equipo
+        Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+        Account[] accounts = AccountManager.get(context).getAccounts();
+        for (Account account : accounts) {
+            if (emailPattern.matcher(account.name).matches()) {
+                String possibleEmail = account.name;
+                if(possibleEmail!=null){
+                    userInfo.put("email",possibleEmail);
+                    Log.d("Android","Android Email : "+ possibleEmail);
+                }
+                break;
+            }
+        }
+
+        //Obtengo el ID del equipo
+        String android_id = Settings.Secure.getString(context.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+        if(android_id!=null){
+            userInfo.put("androidId",android_id);
+            Log.d("Android","Android ID : "+android_id);
+        }
+
+
+        return userInfo;
     }
 
     /**
