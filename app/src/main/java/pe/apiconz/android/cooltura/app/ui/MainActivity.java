@@ -14,20 +14,28 @@ import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
 
 
-public class MainActivity extends AppCompatActivity implements PlaceListFragment.Callback {
+public class MainActivity extends BaseActivity implements PlaceListFragment.Callback {
 
     private boolean mTwoPane = false;
     private String LOG_TAG = MainActivity.class.getSimpleName();
 
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_main;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         if (findViewById(R.id.place_detail_container) != null) {
             mTwoPane = true;
             if (savedInstanceState == null) {
+
+                PlaceDetailFragment fragment = new PlaceDetailFragment();
+
                 getSupportFragmentManager().beginTransaction()
-                        .add(R.id.place_detail_container, new PlaceDetailFragment())
+                        .add(R.id.place_detail_container, fragment)
                         .commit();
             }
         } else {
@@ -40,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements PlaceListFragment
 
         PlaceSyncAdapter.initializeSyncAdapter(this);
     }
+
 
     @Override
     public void onItemSelected(long placeId) {

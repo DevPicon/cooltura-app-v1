@@ -35,7 +35,7 @@ import static pe.apiconz.android.cooltura.app.data.PlaceContract.PlaceEntry;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class PlaceDetailFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class PlaceDetailFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final String PLACE_KEY = "placeId";
     private static final String LOG_TAG = PlaceDetailFragment.class.getCanonicalName();
@@ -55,9 +55,6 @@ public class PlaceDetailFragment extends Fragment implements LoaderManager.Loade
             PlaceContract.LocationEntry.COLUMN_COORD_LAT,
             PlaceContract.LocationEntry.COLUMN_COORD_LONG
     };
-
-    private TextView mTxtPlaceDetailName, mTxtPlaceDetailAddress, mTxtPlaceDetailTypeName, mTxtPlaceDetailCityName;
-    private ImageView mImgPlace, mImgPlaceType;
 
     public PlaceDetailFragment() {
         setHasOptionsMenu(true);
@@ -95,19 +92,15 @@ public class PlaceDetailFragment extends Fragment implements LoaderManager.Loade
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_place_detail, container, false);
-
-        mTxtPlaceDetailName = ((TextView) rootView.findViewById(R.id.txtPlaceDetailName));
-        mTxtPlaceDetailAddress = ((TextView) rootView.findViewById(R.id.txtPlaceDetailAddress));
-        mTxtPlaceDetailTypeName = ((TextView) rootView.findViewById(R.id.txtPlaceDetailTypeName));
-        mTxtPlaceDetailCityName = ((TextView) rootView.findViewById(R.id.txtPlaceDetailCityName));
-
-        mImgPlace = (ImageView) rootView.findViewById(R.id.imgPlace);
-        mImgPlaceType = (ImageView) rootView.findViewById(R.id.imgPlaceType);
-
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
         return rootView;
 
 
+    }
+
+    @Override
+    protected int getFragmentLayoutResourceId() {
+        return R.layout.fragment_place_detail;
     }
 
     @Override

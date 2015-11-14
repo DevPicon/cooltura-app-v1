@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
@@ -24,7 +23,7 @@ import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.data.PlaceContract;
 import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
 
-public class PlaceListFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class PlaceListFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public static final String SELECTED_KEY = "selectedKey";
     private String mCityName;
@@ -44,7 +43,6 @@ public class PlaceListFragment extends Fragment implements LoaderManager.LoaderC
 
     private PlaceAdapter mPlacesAdapter;
     private int mPosition;
-    private ListView mListView;
 
     private final String LOG_TAG = PlaceListFragment.class.getSimpleName();
 
@@ -95,38 +93,17 @@ public class PlaceListFragment extends Fragment implements LoaderManager.LoaderC
     private void updatePlaces() {
         Log.d(LOG_TAG, "Entro a updatePlaces()");
         PlaceSyncAdapter.syncImmediately(getActivity());
-
-        /*Intent alarmIntent = new Intent(getActivity(), PlaceService.AlarmReceiver.class);
-        alarmIntent.putExtra(PlaceService.CITY_QUERY_EXTRA, "Lima");
-
-        PendingIntent pi = PendingIntent.getBroadcast(getActivity(), 0, alarmIntent, PendingIntent.FLAG_ONE_SHOT);
-        AlarmManager am=(AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
-
-        //Set the AlarmManager to wake up the system.
-        am.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis() + 5000, pi);*/
-
-        /*
-        //TODO: Add RECEIVE_BOOT_COMPLETED permission on AndroidManifest, evaluate the intent and declare intent-filter
-        //https://developer.android.com/training/scheduling/alarms.html
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 18);
-
-        //Set the AlarmManager to wake up the system.
-        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                AlarmManager.INTERVAL_DAY, pi);*/
-    }
+}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        View rootView = super.onCreateView(inflater,container,savedInstanceState);
 
         mPlacesAdapter = new PlaceAdapter(
                 getActivity(), null, 0
         );
 
-        mListView = (ListView) rootView.findViewById(R.id.listview_museums);
         mListView.setEmptyView(rootView.findViewById(android.R.id.empty));
         mListView.setAdapter(mPlacesAdapter);
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -151,11 +128,16 @@ public class PlaceListFragment extends Fragment implements LoaderManager.LoaderC
         return rootView;
     }
 
+    @Override
+    protected int getFragmentLayoutResourceId() {
+        return R.layout.fragment_main;
+    }
+
     public interface Callback {
         /**
          * Callback for when an item has been selected.
          */
-        public void onItemSelected(long placeId);
+        void onItemSelected(long placeId);
     }
 
     public PlaceListFragment() {

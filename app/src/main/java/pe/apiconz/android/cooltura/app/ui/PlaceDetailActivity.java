@@ -9,12 +9,17 @@ import android.view.MenuItem;
 import pe.apiconz.android.cooltura.app.R;
 
 
-public class PlaceDetailActivity extends AppCompatActivity {
+public class PlaceDetailActivity extends BaseActivity {
+
+    @Override
+    protected int getLayoutResourceId() {
+        return R.layout.activity_place_detail;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_place_detail);
+
         if (savedInstanceState == null) {
 
             long placeId = getIntent().getLongExtra(PlaceDetailFragment.PLACE_KEY, -1);
@@ -30,6 +35,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
 
 
     @Override

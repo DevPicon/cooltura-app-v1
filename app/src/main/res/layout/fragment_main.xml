@@ -5,7 +5,7 @@
     tools:context=".MainActivity$PlaceholderFragment">
 
     <ListView
-        android:id="@+id/listview_museums"
+        android:id="@+id/listview_places"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></ListView>
 
