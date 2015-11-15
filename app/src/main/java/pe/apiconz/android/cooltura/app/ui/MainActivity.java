@@ -84,24 +84,13 @@ public class MainActivity extends BaseActivity implements PlaceListFragment.Call
         // as you specify a parent activity in AndroidManifest.xml.
         Log.v(LOG_TAG, "Invoke menu  option");
 
-        int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
-        /*if (id == R.id.action_refresh){
-            FetchPlacesTask placesTask = new FetchPlacesTask();
-            //TODO: Temporarily I send country code to get places list
-            placesTask.execute("PE");
-            return true;
-        }*/
-
-
-        if (id == R.id.action_settings) {
-            startActivity(new Intent(this, SettingsActivity.class));
-            return true;
-        }else if(id == R.id.action_about){
-            DialogFragment newFragment = new AboutFragment();
-            newFragment.show(getSupportFragmentManager(), "");
-        }else if(id == R.id.action_refresh){
-
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+            case R.id.action_about:
+                DialogFragment newFragment = new AboutFragment();
+                newFragment.show(getSupportFragmentManager(), "");
         }
 
         return super.onOptionsItemSelected(item);

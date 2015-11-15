@@ -19,27 +19,6 @@ import pe.apiconz.android.cooltura.app.R;
  */
 public abstract class BaseFragment extends Fragment {
 
-    @Nullable
-    @Bind(R.id.txtPlaceDetailName)
-    TextView mTxtPlaceDetailName;
-    @Nullable
-    @Bind(R.id.txtPlaceDetailAddress)
-    TextView mTxtPlaceDetailAddress;
-    @Nullable
-    @Bind(R.id.txtPlaceDetailTypeName)
-    TextView mTxtPlaceDetailTypeName;
-    @Nullable
-    @Bind(R.id.txtPlaceDetailCityName)
-    TextView mTxtPlaceDetailCityName;
-    @Nullable
-    @Bind(R.id.imgPlace)
-    ImageView mImgPlace;
-    @Nullable
-    @Bind(R.id.imgPlaceType)
-    ImageView mImgPlaceType;
-    @Nullable
-    @Bind(R.id.listview_places)
-    ListView mListView;
 
 
     @Nullable

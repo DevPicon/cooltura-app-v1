@@ -24,6 +24,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.data.Place;
 import pe.apiconz.android.cooltura.app.data.PlaceContract;
@@ -36,6 +37,26 @@ import static pe.apiconz.android.cooltura.app.data.PlaceContract.PlaceEntry;
  * A placeholder fragment containing a simple view.
  */
 public class PlaceDetailFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
+
+    @Nullable
+    @Bind(R.id.txtPlaceDetailName)
+    TextView mTxtPlaceDetailName;
+    @Nullable
+    @Bind(R.id.txtPlaceDetailAddress)
+    TextView mTxtPlaceDetailAddress;
+    @Nullable
+    @Bind(R.id.txtPlaceDetailTypeName)
+    TextView mTxtPlaceDetailTypeName;
+    @Nullable
+    @Bind(R.id.txtPlaceDetailCityName)
+    TextView mTxtPlaceDetailCityName;
+    @Nullable
+    @Bind(R.id.imgPlace)
+    ImageView mImgPlace;
+    @Nullable
+    @Bind(R.id.imgPlaceType)
+    ImageView mImgPlaceType;
+
 
     public static final String PLACE_KEY = "placeId";
     private static final String LOG_TAG = PlaceDetailFragment.class.getCanonicalName();
@@ -87,15 +108,6 @@ public class PlaceDetailFragment extends BaseFragment implements LoaderManager.L
         if (arguments != null && arguments.containsKey(PLACE_KEY) && mPlace != null) {
             getLoaderManager().restartLoader(DETAIL_PLACE_LOADER, null, this);
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        return rootView;
-
-
     }
 
     @Override
@@ -218,7 +230,7 @@ public class PlaceDetailFragment extends BaseFragment implements LoaderManager.L
 
     private Intent createSharePlaceIntent() {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
+        shareIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(PLACE_KEY, mPlace + PLACE_SHARE_HASHTAG);
         return shareIntent;

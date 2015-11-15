@@ -19,11 +19,18 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.data.PlaceContract;
 import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
 
 public class PlaceListFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
+
+
+    @Nullable
+    @Bind(R.id.listview_places)
+    ListView mListView;
+
 
     public static final String SELECTED_KEY = "selectedKey";
     private String mCityName;
@@ -48,7 +55,7 @@ public class PlaceListFragment extends BaseFragment implements LoaderManager.Loa
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.placelistfragment, menu);
     }
 
     @Override
