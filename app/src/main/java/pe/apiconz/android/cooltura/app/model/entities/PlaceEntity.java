@@ -3,10 +3,12 @@ package pe.apiconz.android.cooltura.app.model.entities;
 import android.graphics.Bitmap;
 import android.net.Uri;
 
+import java.io.Serializable;
+
 /**
  * Created by Armando Picon on 30/12/2014.
  */
-public class Place {
+public class PlaceEntity implements Serializable {
 
     private String name;
     private String info;
