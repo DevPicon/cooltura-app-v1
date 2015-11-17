@@ -1,12 +1,11 @@
-package pe.apiconz.android.cooltura.app.ui;
+package pe.apiconz.android.cooltura.app.presentation.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import pe.apiconz.android.cooltura.app.R;
+import pe.apiconz.android.cooltura.app.presentation.fragments.PlaceDetailFragment;
 
 
 public class PlaceDetailActivity extends BaseActivity {

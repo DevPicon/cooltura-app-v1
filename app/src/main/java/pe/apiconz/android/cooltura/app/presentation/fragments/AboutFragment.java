@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app.ui;
+package pe.apiconz.android.cooltura.app.presentation.fragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

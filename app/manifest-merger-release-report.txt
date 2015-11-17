@@ -62,7 +62,7 @@ ADDED from AndroidManifest.xml:26:9
 		ADDED from AndroidManifest.xml:29:13
 	android:name
 		ADDED from AndroidManifest.xml:27:13
-provider#pe.apiconz.android.cooltura.app.data.PlaceProvider
+provider#pe.apiconz.android.cooltura.app.model.data.PlaceProvider
 ADDED from AndroidManifest.xml:35:9
 	android:syncable
 		ADDED from AndroidManifest.xml:39:13

@@ -8,14 +8,12 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.SyncRequest;
 import android.content.SyncResult;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.text.format.Time;
 import android.util.Log;
@@ -35,7 +33,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 import pe.apiconz.android.cooltura.app.R;
-import pe.apiconz.android.cooltura.app.data.PlaceContract;
+import pe.apiconz.android.cooltura.app.model.data.PlaceContract;
 import pe.apiconz.android.cooltura.app.utils.Constants;
 
 /**

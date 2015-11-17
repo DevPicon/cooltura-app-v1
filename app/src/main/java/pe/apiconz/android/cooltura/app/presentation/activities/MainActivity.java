@@ -1,17 +1,18 @@
-package pe.apiconz.android.cooltura.app.ui;
+package pe.apiconz.android.cooltura.app.presentation.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
+import pe.apiconz.android.cooltura.app.presentation.fragments.AboutFragment;
+import pe.apiconz.android.cooltura.app.presentation.fragments.PlaceDetailFragment;
+import pe.apiconz.android.cooltura.app.presentation.fragments.PlaceListFragment;
 
 
 public class MainActivity extends BaseActivity implements PlaceListFragment.Callback {

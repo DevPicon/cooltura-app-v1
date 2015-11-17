@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app.ui;
+package pe.apiconz.android.cooltura.app.presentation.adapters;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import pe.apiconz.android.cooltura.app.R;
+import pe.apiconz.android.cooltura.app.presentation.fragments.PlaceListFragment;
 import pe.apiconz.android.cooltura.app.utils.Utility;
 
 /**

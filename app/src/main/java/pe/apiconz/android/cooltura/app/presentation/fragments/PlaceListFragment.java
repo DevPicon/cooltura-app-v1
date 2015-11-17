@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app.ui;
+package pe.apiconz.android.cooltura.app.presentation.fragments;
 
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -21,8 +21,9 @@ import android.widget.ListView;
 
 import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
-import pe.apiconz.android.cooltura.app.data.PlaceContract;
+import pe.apiconz.android.cooltura.app.model.data.PlaceContract;
 import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
+import pe.apiconz.android.cooltura.app.presentation.adapters.PlaceAdapter;
 
 public class PlaceListFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 

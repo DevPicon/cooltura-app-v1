@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app.data;
+package pe.apiconz.android.cooltura.app.model.entities;
 
 import android.graphics.Bitmap;
 import android.net.Uri;

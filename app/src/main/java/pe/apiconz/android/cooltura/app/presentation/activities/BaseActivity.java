@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app.ui;
+package pe.apiconz.android.cooltura.app.presentation.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app.ui;
+package pe.apiconz.android.cooltura.app.presentation.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

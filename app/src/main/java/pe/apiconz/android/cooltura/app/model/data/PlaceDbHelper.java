@@ -1,10 +1,10 @@
-package pe.apiconz.android.cooltura.app.data;
+package pe.apiconz.android.cooltura.app.model.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static pe.apiconz.android.cooltura.app.data.PlaceContract.*;
+import static pe.apiconz.android.cooltura.app.model.data.PlaceContract.*;
 
 /**
  * Created by Indra on 04/01/2015.

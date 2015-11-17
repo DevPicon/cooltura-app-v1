@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app.ui;
+package pe.apiconz.android.cooltura.app.presentation.fragments;
 
 
 import android.content.Intent;
@@ -6,19 +6,15 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,12 +22,12 @@ import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
-import pe.apiconz.android.cooltura.app.data.Place;
-import pe.apiconz.android.cooltura.app.data.PlaceContract;
+import pe.apiconz.android.cooltura.app.model.entities.Place;
+import pe.apiconz.android.cooltura.app.model.data.PlaceContract;
 import pe.apiconz.android.cooltura.app.utils.Constants;
 import pe.apiconz.android.cooltura.app.utils.Utility;
 
-import static pe.apiconz.android.cooltura.app.data.PlaceContract.PlaceEntry;
+import static pe.apiconz.android.cooltura.app.model.data.PlaceContract.PlaceEntry;
 
 /**
  * A placeholder fragment containing a simple view.

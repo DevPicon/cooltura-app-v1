@@ -1,4 +1,4 @@
-package pe.apiconz.android.cooltura.app.data;
+package pe.apiconz.android.cooltura.app.model.data;
 
 import android.content.ContentUris;
 import android.net.Uri;
