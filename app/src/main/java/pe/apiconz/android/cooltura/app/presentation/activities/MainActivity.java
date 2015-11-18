@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import pe.apiconz.android.cooltura.app.R;
-import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
 import pe.apiconz.android.cooltura.app.presentation.fragments.AboutFragment;
 import pe.apiconz.android.cooltura.app.presentation.fragments.PlaceDetailFragment;
 import pe.apiconz.android.cooltura.app.presentation.fragments.PlaceListFragment;
@@ -47,7 +46,6 @@ public class MainActivity extends BaseActivity implements PlaceListFragment.Call
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
 
-        PlaceSyncAdapter.initializeSyncAdapter(this);
     }
 
 

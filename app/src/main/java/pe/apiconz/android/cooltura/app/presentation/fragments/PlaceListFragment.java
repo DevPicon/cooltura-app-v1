@@ -22,7 +22,6 @@ import android.widget.ListView;
 import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.model.data.PlaceContract;
-import pe.apiconz.android.cooltura.app.sync.PlaceSyncAdapter;
 import pe.apiconz.android.cooltura.app.presentation.adapters.PlaceAdapter;
 
 public class PlaceListFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
@@ -100,23 +99,22 @@ public class PlaceListFragment extends BaseFragment implements LoaderManager.Loa
 
     private void updatePlaces() {
         Log.d(LOG_TAG, "Entro a updatePlaces()");
-        PlaceSyncAdapter.syncImmediately(getActivity());
 }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = super.onCreateView(inflater,container,savedInstanceState);
+                @Override
+                public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                        Bundle savedInstanceState) {
+                    View rootView = super.onCreateView(inflater,container,savedInstanceState);
 
-        mPlacesAdapter = new PlaceAdapter(
-                getActivity(), null, 0
-        );
+                    mPlacesAdapter = new PlaceAdapter(
+                            getActivity(), null, 0
+                    );
 
-        mListView.setEmptyView(rootView.findViewById(android.R.id.empty));
-        mListView.setAdapter(mPlacesAdapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    mListView.setEmptyView(rootView.findViewById(android.R.id.empty));
+                    mListView.setAdapter(mPlacesAdapter);
+                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Cursor cursor = mPlacesAdapter.getCursor();
 

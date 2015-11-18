@@ -22,7 +22,7 @@ import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
-import pe.apiconz.android.cooltura.app.model.entities.Place;
+import pe.apiconz.android.cooltura.app.model.entities.PlaceEntity;
 import pe.apiconz.android.cooltura.app.model.data.PlaceContract;
 import pe.apiconz.android.cooltura.app.utils.Constants;
 import pe.apiconz.android.cooltura.app.utils.Utility;
@@ -59,7 +59,7 @@ public class PlaceDetailFragment extends BaseFragment implements LoaderManager.L
     private static final String PLACE_SHARE_HASHTAG = " #CoolturaApp";
     private ShareActionProvider mShareActionProvider;
     private static final int DETAIL_PLACE_LOADER = 0;
-    private Place selectedPlace;
+    private PlaceEntity selectedPlace;
     private String mPlace;
 
     private static final String[] PLACE_DETAIL_COLUMNS = {
@@ -189,7 +189,7 @@ public class PlaceDetailFragment extends BaseFragment implements LoaderManager.L
         String placeCityName = data.getString(data.getColumnIndex(PlaceContract.LocationEntry.COLUMN_CITY_NAME));
         mTxtPlaceDetailCityName.setText(placeCityName);
 
-        selectedPlace = new Place();
+        selectedPlace = new PlaceEntity();
         String lon = data.getString(data.getColumnIndex(PlaceContract.LocationEntry.COLUMN_COORD_LONG));
         selectedPlace.setLon(lon);
         String lat = data.getString(data.getColumnIndex(PlaceContract.LocationEntry.COLUMN_COORD_LAT));
