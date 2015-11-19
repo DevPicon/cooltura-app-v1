@@ -15,7 +15,7 @@ public class PlaceDetailActivity extends BaseActivity {
         return R.layout.activity_place_detail;
     }
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -33,8 +33,23 @@ public class PlaceDetailActivity extends BaseActivity {
                     .add(R.id.place_detail_container, fragment)
                     .commit();
         }
-    }
+    }*/
 
+    @Override
+    protected void onCreate() {
+
+        long placeId = getIntent().getLongExtra(PlaceDetailFragment.PLACE_KEY, -1);
+
+        Bundle arguments = new Bundle();
+        arguments.putLong(PlaceDetailFragment.PLACE_KEY, placeId);
+
+        PlaceDetailFragment fragment = new PlaceDetailFragment();
+        fragment.setArguments(arguments);
+
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.place_detail_container, fragment)
+                .commit();
+    }
 
 
     @Override

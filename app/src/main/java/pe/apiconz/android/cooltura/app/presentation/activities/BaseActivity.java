@@ -8,13 +8,15 @@ import android.support.v7.app.AppCompatActivity;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
+
+        onCreate();
     }
 
+    protected abstract void onCreate();
     protected abstract int getLayoutResourceId();
 
 }

@@ -3,7 +3,6 @@ package pe.apiconz.android.cooltura.app.presentation.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,13 +18,12 @@ public class MainActivity extends BaseActivity implements PlaceListFragment.Call
     private boolean mTwoPane = false;
     private String LOG_TAG = MainActivity.class.getSimpleName();
 
-
     @Override
     protected int getLayoutResourceId() {
         return R.layout.activity_main;
     }
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (findViewById(R.id.place_detail_container) != null) {
@@ -46,6 +44,29 @@ public class MainActivity extends BaseActivity implements PlaceListFragment.Call
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayShowHomeEnabled(true);
 
+    }*/
+
+    @Override
+    protected void onCreate() {
+
+        if (findViewById(R.id.place_detail_container) != null) {
+            mTwoPane = true;
+
+            PlaceDetailFragment fragment = new PlaceDetailFragment();
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.place_detail_container, fragment)
+                    .commit();
+
+        }
+        else {
+            mTwoPane = false;
+        }
+
+        // Show home icon
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
     }
 
 
@@ -85,14 +106,19 @@ public class MainActivity extends BaseActivity implements PlaceListFragment.Call
 
         switch (item.getItemId()) {
             case R.id.action_settings:
+
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.action_about:
+
                 DialogFragment newFragment = new AboutFragment();
                 newFragment.show(getSupportFragmentManager(), "");
-        }
+                return true;
 
-        return super.onOptionsItemSelected(item);
+            default:
+
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 

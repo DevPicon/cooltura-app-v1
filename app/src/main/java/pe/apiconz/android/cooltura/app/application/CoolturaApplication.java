@@ -15,7 +15,7 @@ public class CoolturaApplication extends Application {
     private String FIREBASE_CHILD_TYPES = "types";
     private String FIREBASE_CHILD_USERS = "users";
 
-    Firebase firebase;
+    private Firebase firebase;
 
     @Override
     public void onCreate() {

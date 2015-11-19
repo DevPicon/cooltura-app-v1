@@ -36,22 +36,27 @@ public class PlaceDetailFragment extends BaseFragment implements LoaderManager.L
 
     @Nullable
     @Bind(R.id.txtPlaceDetailName)
-    TextView mTxtPlaceDetailName;
+    protected TextView mTxtPlaceDetailName;
+
     @Nullable
     @Bind(R.id.txtPlaceDetailAddress)
-    TextView mTxtPlaceDetailAddress;
+    protected TextView mTxtPlaceDetailAddress;
+
     @Nullable
     @Bind(R.id.txtPlaceDetailTypeName)
-    TextView mTxtPlaceDetailTypeName;
+    protected TextView mTxtPlaceDetailTypeName;
+
     @Nullable
     @Bind(R.id.txtPlaceDetailCityName)
-    TextView mTxtPlaceDetailCityName;
+    protected TextView mTxtPlaceDetailCityName;
+
     @Nullable
     @Bind(R.id.imgPlace)
-    ImageView mImgPlace;
+    protected ImageView mImgPlace;
+
     @Nullable
     @Bind(R.id.imgPlaceType)
-    ImageView mImgPlaceType;
+    protected ImageView mImgPlaceType;
 
 
     public static final String PLACE_KEY = "placeId";

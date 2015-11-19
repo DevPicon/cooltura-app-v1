@@ -29,7 +29,7 @@ public class PlaceListFragment extends BaseFragment implements LoaderManager.Loa
 
     @Nullable
     @Bind(R.id.listview_places)
-    ListView mListView;
+    protected ListView mListView;
 
 
     public static final String SELECTED_KEY = "selectedKey";
@@ -101,20 +101,20 @@ public class PlaceListFragment extends BaseFragment implements LoaderManager.Loa
         Log.d(LOG_TAG, "Entro a updatePlaces()");
 }
 
-                @Override
-                public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                        Bundle savedInstanceState) {
-                    View rootView = super.onCreateView(inflater,container,savedInstanceState);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+            Bundle savedInstanceState) {
+        View rootView = super.onCreateView(inflater,container,savedInstanceState);
 
-                    mPlacesAdapter = new PlaceAdapter(
-                            getActivity(), null, 0
-                    );
+        mPlacesAdapter = new PlaceAdapter(
+                getActivity(), null, 0
+        );
 
-                    mListView.setEmptyView(rootView.findViewById(android.R.id.empty));
-                    mListView.setAdapter(mPlacesAdapter);
-                    mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        mListView.setEmptyView(rootView.findViewById(android.R.id.empty));
+        mListView.setAdapter(mPlacesAdapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Cursor cursor = mPlacesAdapter.getCursor();
 
@@ -126,6 +126,8 @@ public class PlaceListFragment extends BaseFragment implements LoaderManager.Loa
                 mPosition = position;
             }
         });
+
+
 
         if (savedInstanceState != null && savedInstanceState.containsKey(SELECTED_KEY)) {
             mPosition = savedInstanceState.getInt(SELECTED_KEY);
