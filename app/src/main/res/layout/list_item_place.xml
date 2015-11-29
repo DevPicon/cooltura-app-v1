@@ -1,43 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/touch_selector"
-    android:gravity="center_vertical"
-    android:minHeight="?android:attr/listPreferredItemHeight"
-    android:orientation="horizontal"
-    android:paddingStart="@dimen/keyline1">
+    android:background="?android:attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_keyline">
 
-    <FrameLayout
-        android:layout_width="60dp"
-        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/iconPlaceView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_archaeolo" />
+    <ImageView
+        android:id="@+id/iconPlaceView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_archaeolo" />
 
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/txtPlaceName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:layout_marginLeft="@dimen/margin_keyline"
+        android:layout_toRightOf="@+id/iconPlaceView"
+        android:text="Gran Teatro Nacional"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="@dimen/item_subheading" />
 
-        <TextView
-            android:id="@+id/txtPlaceName"
-            style="@style/CodeFont"
-            android:text="Gran Teatro Nacional"
-            android:textSize="22sp" />
+    <TextView
+        android:id="@+id/txtPlaceCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtPlaceName"
+        android:layout_marginLeft="@dimen/margin_keyline"
+        android:layout_toRightOf="@+id/iconPlaceView"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="Lima"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="@dimen/item_body"/>
 
-        <TextView
-            android:id="@+id/txtPlaceCity"
-            style="@style/CodeFont"
-            android:text="Lima" />
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>
