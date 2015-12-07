@@ -19,16 +19,12 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.model.data.PlaceContract;
 import pe.apiconz.android.cooltura.app.presentation.adapters.PlaceAdapter;
 
 public class PlaceListFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-
-    @Nullable
-    @Bind(R.id.listview_places)
     protected ListView mListView;
 
 
@@ -99,11 +95,11 @@ public class PlaceListFragment extends BaseFragment implements LoaderManager.Loa
 
     private void updatePlaces() {
         Log.d(LOG_TAG, "Entro a updatePlaces()");
-}
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater,container,savedInstanceState);
 
         mPlacesAdapter = new PlaceAdapter(
@@ -140,6 +136,17 @@ public class PlaceListFragment extends BaseFragment implements LoaderManager.Loa
     protected int getFragmentLayoutResourceId() {
         return R.layout.fragment_main;
     }
+
+    @Override
+    protected void onCreateView() {
+
+    }
+
+    @Override
+    protected void onCreateView(View view) {
+
+    }
+
 
     public interface Callback {
         /**

@@ -8,11 +8,11 @@
     <dimen name="keyline2">72dp</dimen>
     <item type="dimen" name="keyline3">@dimen/standard_margin</item>
     <integer name="list_columns">1</integer>
-    
-    
-    
+
+
+
     <dimen name="margin_keyline">16dp</dimen>
     <dimen name="item_subheading">16sp</dimen>
     <dimen name="item_body">14sp</dimen>
-    
+
 </resources>

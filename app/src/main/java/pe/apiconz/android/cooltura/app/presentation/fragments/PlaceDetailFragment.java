@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,8 +23,8 @@ import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
-import pe.apiconz.android.cooltura.app.model.entities.PlaceEntity;
 import pe.apiconz.android.cooltura.app.model.data.PlaceContract;
+import pe.apiconz.android.cooltura.app.model.entities.PlaceEntity;
 import pe.apiconz.android.cooltura.app.utils.Constants;
 import pe.apiconz.android.cooltura.app.utils.Utility;
 
@@ -34,39 +35,10 @@ import static pe.apiconz.android.cooltura.app.model.data.PlaceContract.PlaceEntr
  */
 public class PlaceDetailFragment extends BaseFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    @Nullable
-    @Bind(R.id.txtPlaceDetailName)
-    protected TextView mTxtPlaceDetailName;
-
-    @Nullable
-    @Bind(R.id.txtPlaceDetailAddress)
-    protected TextView mTxtPlaceDetailAddress;
-
-    @Nullable
-    @Bind(R.id.txtPlaceDetailTypeName)
-    protected TextView mTxtPlaceDetailTypeName;
-
-    @Nullable
-    @Bind(R.id.txtPlaceDetailCityName)
-    protected TextView mTxtPlaceDetailCityName;
-
-    @Nullable
-    @Bind(R.id.imgPlace)
-    protected ImageView mImgPlace;
-
-    @Nullable
-    @Bind(R.id.imgPlaceType)
-    protected ImageView mImgPlaceType;
-
-
     public static final String PLACE_KEY = "placeId";
     private static final String LOG_TAG = PlaceDetailFragment.class.getCanonicalName();
     private static final String PLACE_SHARE_HASHTAG = " #CoolturaApp";
-    private ShareActionProvider mShareActionProvider;
     private static final int DETAIL_PLACE_LOADER = 0;
-    private PlaceEntity selectedPlace;
-    private String mPlace;
-
     private static final String[] PLACE_DETAIL_COLUMNS = {
             PlaceEntry.TABLE_NAME + "." + PlaceEntry._ID,
             PlaceEntry.COLUMN_PLACE_NAME,
@@ -77,6 +49,27 @@ public class PlaceDetailFragment extends BaseFragment implements LoaderManager.L
             PlaceContract.LocationEntry.COLUMN_COORD_LAT,
             PlaceContract.LocationEntry.COLUMN_COORD_LONG
     };
+    @Nullable
+    @Bind(R.id.txtPlaceDetailName)
+    protected TextView mTxtPlaceDetailName;
+    @Nullable
+    @Bind(R.id.txtPlaceDetailAddress)
+    protected TextView mTxtPlaceDetailAddress;
+    @Nullable
+    @Bind(R.id.txtPlaceDetailTypeName)
+    protected TextView mTxtPlaceDetailTypeName;
+    @Nullable
+    @Bind(R.id.txtPlaceDetailCityName)
+    protected TextView mTxtPlaceDetailCityName;
+    @Nullable
+    @Bind(R.id.imgPlace)
+    protected ImageView mImgPlace;
+    @Nullable
+    @Bind(R.id.imgPlaceType)
+    protected ImageView mImgPlaceType;
+    private ShareActionProvider mShareActionProvider;
+    private PlaceEntity selectedPlace;
+    private String mPlace;
 
     public PlaceDetailFragment() {
         setHasOptionsMenu(true);
@@ -117,6 +110,16 @@ public class PlaceDetailFragment extends BaseFragment implements LoaderManager.L
     }
 
     @Override
+    protected void onCreateView() {
+
+    }
+
+    @Override
+    protected void onCreateView(View view) {
+
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         Log.v(LOG_TAG, "in onCreateOptionsMenu");
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -134,11 +137,11 @@ public class PlaceDetailFragment extends BaseFragment implements LoaderManager.L
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_map:
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(Constants.MAPS_INTENT_URI +
-                        Uri.encode( selectedPlace.getLat()+ ", " + selectedPlace.getLon())));
+                        Uri.encode(selectedPlace.getLat() + ", " + selectedPlace.getLon())));
                 startActivity(intent);
                 return true;
             case R.id.action_share:
@@ -214,7 +217,6 @@ public class PlaceDetailFragment extends BaseFragment implements LoaderManager.L
                 .error(R.drawable.dummy)
                 .crossFade()
                 .into(mImgPlace);
-
 
 
         // We still need this for the share intent
