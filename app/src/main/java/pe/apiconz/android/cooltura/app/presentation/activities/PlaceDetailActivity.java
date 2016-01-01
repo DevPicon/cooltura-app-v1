@@ -1,6 +1,7 @@
 package pe.apiconz.android.cooltura.app.presentation.activities;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -13,6 +14,17 @@ public class PlaceDetailActivity extends BaseActivity {
     @Override
     protected int getLayoutResourceId() {
         return R.layout.activity_place_detail;
+    }
+
+    @Override
+    protected void setSupportActionBar() {
+
+        setSupportActionBar(toolbar);
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white);
+            supportActionBar.setDisplayHomeAsUpEnabled(false);
+        }
     }
 
     /*@Override

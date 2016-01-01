@@ -3,7 +3,7 @@ package pe.apiconz.android.cooltura.app.presentation.activities;
 import android.content.Intent;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,12 +22,21 @@ public class MainActivity extends BaseActivity {
         return R.layout.activity_main;
     }
 
+    @Override
+    protected void setSupportActionBar() {
+        setSupportActionBar(toolbar);
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setHomeAsUpIndicator(R.drawable.ic_menu_white);
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
 
     @Override
     protected void onCreate() {
         Log.d(TAG, "Paso por onCreate");
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar();
 
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
