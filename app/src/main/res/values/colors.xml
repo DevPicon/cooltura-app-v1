@@ -22,4 +22,6 @@
     <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#9E9E9E</color>
 
+    <color name="button_grey">#757575</color>
+
 </resources>
