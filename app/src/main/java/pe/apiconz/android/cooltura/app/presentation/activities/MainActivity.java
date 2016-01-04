@@ -3,6 +3,7 @@ package pe.apiconz.android.cooltura.app.presentation.activities;
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -15,6 +16,7 @@ import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.presentation.fragments.AboutFragment;
 import pe.apiconz.android.cooltura.app.presentation.fragments.ShinPlaceListFragment;
+import pe.apiconz.android.cooltura.app.presentation.fragments.WifiPlaceListFragment;
 
 
 public class MainActivity extends BaseActivity {
@@ -46,24 +48,44 @@ public class MainActivity extends BaseActivity {
         Log.d(TAG, "Paso por onCreate");
         setSupportActionBar();
 
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
 
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 item.setChecked(true);
 
-                drawerLayout.closeDrawers();
+                displayView(item.getItemId());
 
                 return true;
             }
         });
 
+        displayView(R.id.nav_places);
 
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        ShinPlaceListFragment fragment = new ShinPlaceListFragment();
-        fragmentTransaction.replace(R.id.fragment_place, fragment);
-        fragmentTransaction.commit();
+    }
 
+    private void displayView(int viewId) {
+        Fragment fragment = null;
+
+        switch (viewId) {
+            case R.id.nav_places:
+                fragment = new ShinPlaceListFragment();
+                break;
+            case R.id.nav_wifi:
+                fragment = new WifiPlaceListFragment();
+                break;
+
+        }
+
+        if (fragment != null) {
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_place, fragment);
+            fragmentTransaction.commit();
+        }
+
+        drawerLayout.closeDrawers();
     }
 
 
