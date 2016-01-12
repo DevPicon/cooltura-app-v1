@@ -26,6 +26,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="2" />
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_marginBottom="@dimen/margin_keyline"
+            android:layout_marginRight="@dimen/margin_keyline"
+            android:src="@drawable/ic_add_white_24dp"/>
+
+
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView

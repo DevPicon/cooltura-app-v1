@@ -1,7 +1,9 @@
 package pe.apiconz.android.cooltura.app.presentation.activities;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
@@ -25,6 +28,8 @@ public class MainActivity extends BaseActivity {
     protected DrawerLayout drawerLayout;
     @Bind(R.id.nav_view)
     protected NavigationView navigationView;
+    @Bind(R.id.fab)
+    protected FloatingActionButton fab;
     private String TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -63,6 +68,15 @@ public class MainActivity extends BaseActivity {
         });
 
         displayView(R.id.nav_places);
+
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, "Añadir nuevo lugar!", Snackbar.LENGTH_LONG).show();
+                //TODO: Mostrar el formualario para agregar un nuevo lugar
+            }
+        });
 
     }
 
