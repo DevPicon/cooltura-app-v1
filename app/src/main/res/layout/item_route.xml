@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_route_view"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/card_height"
+    android:layout_gravity="center"
+    android:layout_marginBottom="@dimen/margin_keyline"
+    android:layout_marginLeft="@dimen/margin_keyline"
+    android:layout_marginRight="@dimen/margin_keyline"
+    android:foreground="?attr/selectableItemBackground"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/card_route_image"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_image_height"
+            android:scaleType="centerCrop"
+            android:src="@drawable/place_puente_suspiros" />
+
+        <TextView
+            android:id="@+id/card_route_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_title_height"
+            android:layout_above="@id/card_route_text"
+            android:layout_marginLeft="@dimen/margin_keyline"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Nombre del lugar"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="@dimen/item_subheading" />
+
+        <TextView
+            android:id="@+id/card_route_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_route_image"
+            android:layout_marginBottom="@dimen/margin_keyline"
+            android:layout_marginLeft="@dimen/margin_keyline"
+            android:layout_marginRight="@dimen/margin_keyline"
+            android:layout_marginTop="@dimen/margin_keyline"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Aqui ira la descripcion de la ruta."
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/item_body" />
+
+
+        <Button
+            android:id="@+id/action_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_route_text"
+            android:text="@string/button_detail"
+            android:textColor="?attr/colorPrimary" />
+
+        <ImageButton
+            android:id="@+id/share_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/cards_button_width"
+            android:layout_height="@dimen/cards_button_height"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/card_route_text"
+            android:layout_marginRight="@dimen/margin_keyline"
+            android:src="@drawable/ic_share_variant_black_24dp"
+            android:tint="@color/button_grey" />
+
+        <ImageButton
+            android:id="@+id/add_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/cards_button_width"
+            android:layout_height="@dimen/cards_button_height"
+            android:layout_below="@+id/card_route_text"
+            android:layout_marginRight="@dimen/margin_keyline"
+            android:layout_toLeftOf="@id/share_button"
+            android:src="@drawable/ic_star_black_24dp"
+            android:tint="@color/button_grey" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

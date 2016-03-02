@@ -10,12 +10,19 @@
     <integer name="list_columns">1</integer>
 
     <dimen name="nav_header_height">222dp</dimen>
-
     <dimen name="margin_keyline">16dp</dimen>
 
-    <dimen name="card_height">304dp</dimen>
     <dimen name="item_title">20sp</dimen>
     <dimen name="item_subheading">16sp</dimen>
     <dimen name="item_body">14sp</dimen>
+
+    <dimen name="card_height">304dp</dimen>
+    <dimen name="card_image_height">200dp</dimen>
+    <dimen name="card_title_height">40dp</dimen>
+    <dimen name="cards_button_width">48dp</dimen>
+    <dimen name="cards_button_height">48dp</dimen>
+
+    <dimen name="article_headline">24sp</dimen>
+    <dimen name="article_subheading">16sp</dimen>
 
 </resources>

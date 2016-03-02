@@ -42,4 +42,8 @@
 
     <string name="nav_menu_free_wifi">Free WIFI Places</string>
     <string name="nav_menu_places_of_interest">Places of interest</string>
+
+    <string name="add_place_name">Place name</string>
+
+    <string name="button_detail">Ver Detalles</string>
 </resources>

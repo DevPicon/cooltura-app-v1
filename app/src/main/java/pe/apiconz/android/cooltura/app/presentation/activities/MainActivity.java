@@ -18,6 +18,7 @@ import android.view.View;
 import butterknife.Bind;
 import pe.apiconz.android.cooltura.app.R;
 import pe.apiconz.android.cooltura.app.presentation.fragments.AboutFragment;
+import pe.apiconz.android.cooltura.app.presentation.fragments.AddPlaceFragment;
 import pe.apiconz.android.cooltura.app.presentation.fragments.ShinPlaceListFragment;
 import pe.apiconz.android.cooltura.app.presentation.fragments.WifiPlaceListFragment;
 
@@ -75,6 +76,8 @@ public class MainActivity extends BaseActivity {
             public void onClick(View v) {
                 Snackbar.make(v, "Añadir nuevo lugar!", Snackbar.LENGTH_LONG).show();
                 //TODO: Mostrar el formualario para agregar un nuevo lugar
+                createFragment(new AddPlaceFragment());
+
             }
         });
 
@@ -94,12 +97,16 @@ public class MainActivity extends BaseActivity {
         }
 
         if (fragment != null) {
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.fragment_place, fragment);
-            fragmentTransaction.commit();
+            createFragment(fragment);
         }
 
         drawerLayout.closeDrawers();
+    }
+
+    private void createFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_place, fragment);
+        fragmentTransaction.commit();
     }
 
 
